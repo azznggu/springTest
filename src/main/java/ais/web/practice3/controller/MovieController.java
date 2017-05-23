@@ -40,5 +40,15 @@ public class MovieController {
 		}
 		return "movieList";
 	}
-
+	
+	@RequestMapping(value="/writeMovie",method=RequestMethod.GET)
+	public String writeMovie() {
+		return "writeMovie";
+	}
+	
+	@RequestMapping(value="/writeMovie",method=RequestMethod.POST)
+	public String writeMoview(MovieVO movie) {
+		logger.info(movie.toString());
+		return "redirect:movieList";
+	}
 }

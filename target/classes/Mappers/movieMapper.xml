@@ -7,4 +7,5 @@
 	<select id="showMovieInfoList" resultType="Movie">
 		SELECT * FROM MOVIE_INFO
 	</select>
+	<insert id="insertMovie" parameterType=""></insert>
 </mapper>

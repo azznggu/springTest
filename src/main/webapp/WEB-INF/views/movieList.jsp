@@ -10,7 +10,7 @@
 <script>
 	$(function() {
 		$("#writeBtn").on("click", function() {
-			window.location = "./";
+			window.location = "./writeMovie";
 		});
 		$("#backBtn").on("click", function() {
 			window.location = "./";
@@ -31,7 +31,7 @@
 		<c:forEach var="movie" items="${movieList}">
 			<tr align="center">
 				<td>${movie.movie_no}</td>
-				<td>${movie.movie_title}</td>
+				<td><a href="movieDetail?movie_no=${movie_no}">${movie.movie_title}</a></td>
 				<td>${movie.movie_director}</td>
 				<td>${movie.movie_actor}</td>
 				<td>${movie.movie_genre}</td>
