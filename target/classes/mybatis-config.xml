@@ -5,8 +5,11 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="ais.web.practice3.vo.UserVO" alias="User" />
+		<typeAlias type="ais.web.practice3.vo.MovieVO" alias="Movie" />
 	</typeAliases>
+	
 	<mappers>
 		<mapper resource="Mappers/userMapper.xml" />
+		<mapper resource="Mappers/movieMapper.xml" />
 	</mappers>
 </configuration>

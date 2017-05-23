@@ -1,22 +1,31 @@
 package ais.web.practice3.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class MovieVO {
 	private int movie_no;
 	private String movie_title;
 	private String movie_director;
 	private String movie_actor;
 	private String movie_genre;
+	private String originalfile;
+	private String savedfile;
+	private MultipartFile file;
 
 	public MovieVO() {
 	}
 
-	public MovieVO(int movie_no, String movie_title, String movie_director, String movie_actor, String movie_genre) {
+	public MovieVO(int movie_no, String movie_title, String movie_director, String movie_actor, String movie_genre,
+			String originalfile, String savedfile, MultipartFile file) {
 		super();
 		this.movie_no = movie_no;
 		this.movie_title = movie_title;
 		this.movie_director = movie_director;
 		this.movie_actor = movie_actor;
 		this.movie_genre = movie_genre;
+		this.originalfile = originalfile;
+		this.savedfile = savedfile;
+		this.file = file;
 	}
 
 	public int getMovie_no() {
@@ -59,10 +68,35 @@ public class MovieVO {
 		this.movie_genre = movie_genre;
 	}
 
+	public String getOriginalfile() {
+		return originalfile;
+	}
+
+	public void setOriginalfile(String originalfile) {
+		this.originalfile = originalfile;
+	}
+
+	public String getSavedfile() {
+		return savedfile;
+	}
+
+	public void setSavedfile(String savedfile) {
+		this.savedfile = savedfile;
+	}
+
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
+
 	@Override
 	public String toString() {
 		return "MovieVO [movie_no=" + movie_no + ", movie_title=" + movie_title + ", movie_director=" + movie_director
-				+ ", movie_actor=" + movie_actor + ", movie_genre=" + movie_genre + "]";
+				+ ", movie_actor=" + movie_actor + ", movie_genre=" + movie_genre + ", originalfile=" + originalfile
+				+ ", savedfile=" + savedfile + ", file=" + file + "]";
 	}
 
 }

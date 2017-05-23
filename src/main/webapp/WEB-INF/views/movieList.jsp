@@ -6,15 +6,39 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>영화 목록</title>
+<script src="script/jquery-3.1.1.min.js"></script>
+<script>
+	$(function() {
+		$("#writeBtn").on("click", function() {
+			window.location = "./";
+		});
+		$("#backBtn").on("click", function() {
+			window.location = "./";
+		});
+	});
+</script>
 </head>
 <body>
-<h2>Movie List</h2>
-		<table>
-			<tr>
-				<th>a</th>
-				<th>b</th>
-				<th>c</th>
+	<h2>Movie List</h2>
+	<table border="1" style="width: 500px">
+		<tr>
+			<th>no</th>
+			<th>title</th>
+			<th>director</th>
+			<th>actor</th>
+			<th>genre</th>
+		</tr>
+		<c:forEach var="movie" items="${movieList}">
+			<tr align="center">
+				<td>${movie.movie_no}</td>
+				<td>${movie.movie_title}</td>
+				<td>${movie.movie_director}</td>
+				<td>${movie.movie_actor}</td>
+				<td>${movie.movie_genre}</td>
 			</tr>
-		</table>
+		</c:forEach>
+	</table>
+	<button id="writeBtn">新規作成</button>
+	<button id="backBtn">戻る</button>
 </body>
 </html>
