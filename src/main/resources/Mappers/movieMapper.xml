@@ -21,4 +21,10 @@
 		SELECT * FROM
 		MOVIE_INFO WHERE MOVIE_NO=#{movie_no}
 	</select>
+	
+	<!--영화 정보 삭제(해당 번호) -->
+	<delete id="deleteMovie" parameterType="int">
+		DELETE MOVIE_INFO WHERE MOVIE_NO=#{movie_no}
+	</delete>
+	<!--영화 정보 수정(해당 번호) -->
 </mapper>

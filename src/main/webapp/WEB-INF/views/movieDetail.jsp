@@ -13,8 +13,14 @@
 			 $("#form").submit();
 		});
 		$("#deleteBtn").on("click", function(){
+			 var result = confirm("現在の情報を削除します。");
+			 if(result) {
 			 $("#form").attr("action", "deleteMovie");
 			 $("#form").submit();
+			 } else {
+				 alert("取り消し");
+				 return;
+			 }
 		});
 		$("#backBtn").on("click", function(){
 			window.location="./movieList";
@@ -44,7 +50,7 @@
 	</table>
 	
 	<form id="form" method="post">
-		<input type="hidden" value="${movie.movie_no}">
+		<input type="hidden" value="${movie.movie_no}" name="movie_no">
 	</form>
 	
 	<button id="updateBtn">更新</button>

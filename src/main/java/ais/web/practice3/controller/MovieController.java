@@ -84,9 +84,17 @@ public class MovieController {
 	}
 
 	@RequestMapping(value = "deleteMovie", method = RequestMethod.POST)
-	public String deleteMovie() {
+	public String deleteMovie(String movie_no) {
 		logger.info("delete");
-		return "movieDetail";
+		MovieDAO dao = sqlSession.getMapper(MovieDAO.class);
+		try {
+			dao.deleteMovie(Integer.parseInt(movie_no));
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:movieList";
 
 	}
 }
