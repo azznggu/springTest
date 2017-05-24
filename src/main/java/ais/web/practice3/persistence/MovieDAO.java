@@ -9,4 +9,5 @@ public interface MovieDAO {
 	public int insertMovie(MovieVO movie) throws Exception;
 	public MovieVO selectMovie(int movie_no) throws Exception;
 	public int deleteMovie(int movie_no) throws Exception;
+	public int updateMovie(MovieVO movie) throws Exception;
 }
