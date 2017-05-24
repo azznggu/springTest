@@ -36,7 +36,8 @@
 		UPDATE MOVIE_INFO SET
 		MOVIE_TITLE=#{movie_title},
 		MOVIE_DIRECTOR=#{movie_director},
-		MOVIE_ACTOR=#{movie_actor}, MOVIE_GENRE=#{movie_genre}
+		MOVIE_ACTOR=#{movie_actor}, MOVIE_GENRE=#{movie_genre},
+		ORIGINALFILE=#{originalfile}, SAVEDFILE=#{savedfile}
 		WHERE
 		MOVIE_NO=#{movie_no}
 	</update>

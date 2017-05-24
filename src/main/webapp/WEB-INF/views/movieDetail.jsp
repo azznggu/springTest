@@ -16,7 +16,9 @@
 			$("#movie_director").removeAttr("readonly");	
 			$("#movie_actor").removeAttr("readonly");
 			$("#movie_genre").removeAttr("readonly");
+			$("#file").css("visibility", "visible");
 			$("#doUpdateBtn").css("visibility", "visible");
+			$("#fileDownTag").css("visibility", "hidden");
 			$(this).css("visibility", "hidden");
 
 		});
@@ -42,7 +44,7 @@
 </head>
 <body>
 	<h1>Movie詳細内容</h1>
-	<form id="form" method="post">
+	<form id="form" method="post" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<th>title</th>
@@ -66,6 +68,20 @@
 					value="${movie.movie_genre}" readonly="readonly">
 				</td>
 			</tr>
+			<tr>
+				<th>file</th>
+				<td>
+					<a id="fileDownTag" href="download?f=${movie.savedfile}">${movie.originalfile}</a>
+					<input type="file" id="file" name="file" value="${movie.originalfile}" style="visibility: hidden;">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<c:if test="${movie.savedfile != null}">
+						<img style="width: 30%;" src="download?f=${movie.savedfile}" />
+					</c:if>
+				</td>
+		</tr>
 			<tr>
 				<td colspan="2">
 					<c:if test="${movie.userId eq userId}">
