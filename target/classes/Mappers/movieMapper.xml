@@ -12,8 +12,8 @@
 	<!--영화 정보 입력 -->
 	<insert id="insertMovie" parameterType="Movie">
 		INSERT INTO
-		MOVIE_INFO(MOVIE_NO, MOVIE_TITLE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_GENRE)
-		VALUES(MOVIE_NO_SEQ.NEXTVAL, #{movie_title}, #{movie_director}, #{movie_actor}, #{movie_genre})
+		MOVIE_INFO(MOVIE_NO, MOVIE_TITLE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_GENRE, USERID)
+		VALUES(MOVIE_NO_SEQ.NEXTVAL, #{movie_title}, #{movie_director}, #{movie_actor}, #{movie_genre}, #{userId})
 	</insert>
 	
 	<!--영화 정보 검색(해당 번호) -->

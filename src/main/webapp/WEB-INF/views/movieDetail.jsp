@@ -52,9 +52,10 @@
 	<form id="form" method="post">
 		<input type="hidden" value="${movie.movie_no}" name="movie_no">
 	</form>
-	
+	<c:if test="${movie.userId eq userId}"> 
 	<button id="updateBtn">更新</button>
 	<button id="deleteBtn">削除</button>
+	</c:if>
 	<button id="backBtn">戻る</button>
 </body>
 </html>
