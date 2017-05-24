@@ -31,24 +31,62 @@ public class MovieController {
 		MovieDAO dao = sqlSession.getMapper(MovieDAO.class);
 		try {
 			List<MovieVO> movieList = dao.showMovieInfoList();
-			for (MovieVO m : movieList) {
-				logger.info(m.toString());
-			}
 			model.addAttribute("movieList", movieList);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "movieList";
 	}
-	
-	@RequestMapping(value="/writeMovie",method=RequestMethod.GET)
+
+	@RequestMapping(value = "/writeMovie", method = RequestMethod.GET)
 	public String writeMovie() {
 		return "writeMovie";
 	}
-	
-	@RequestMapping(value="/writeMovie",method=RequestMethod.POST)
-	public String writeMoview(MovieVO movie) {
-		logger.info(movie.toString());
-		return "redirect:movieList";
+
+	@RequestMapping(value = "/writeMovie", method = RequestMethod.POST)
+	public String writeMovie(MovieVO movie, Model model) {
+		logger.info("writeMovie insert data: " + movie.toString());
+		String returnMessage = null;
+		MovieDAO dao = sqlSession.getMapper(MovieDAO.class);
+		try {
+			int result = dao.insertMovie(movie);
+			if (result != 0) {
+				returnMessage = "redirect:movieList";
+			} else {
+				returnMessage = "writeMovie";
+				model.addAttribute("movie", movie);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return returnMessage;
+	}
+
+	@RequestMapping(value = "/movieDetail", method = RequestMethod.GET)
+	public String movieDetail(String movie_no, Model model) {
+		MovieDAO dao = sqlSession.getMapper(MovieDAO.class);
+		try {
+			MovieVO movie = dao.selectMovie(Integer.parseInt(movie_no));
+			logger.info("detail: " + movie.toString());
+			model.addAttribute("movie", movie);
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "movieDetail";
+	}
+
+	@RequestMapping(value = "/updateMovie", method = RequestMethod.POST)
+	public String updateMovie() {
+		logger.info("update");
+		return "movieDetail";
+	}
+
+	@RequestMapping(value = "deleteMovie", method = RequestMethod.POST)
+	public String deleteMovie() {
+		logger.info("delete");
+		return "movieDetail";
+
 	}
 }

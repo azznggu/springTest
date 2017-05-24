@@ -3,9 +3,22 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ais.web.practice3.persistence.MovieDAO">
-	<!--영화 정보 검색 -->
-	<select id="showMovieInfoList" resultType="Movie">
-		SELECT * FROM MOVIE_INFO
+	<!--영화 정보 전체 검색 -->
+	<select id="showMovieInfoList" resultType="Movie" >
+		SELECT * FROM
+		MOVIE_INFO
 	</select>
-	<insert id="insertMovie" parameterType=""></insert>
+	
+	<!--영화 정보 입력 -->
+	<insert id="insertMovie" parameterType="Movie">
+		INSERT INTO
+		MOVIE_INFO(MOVIE_NO, MOVIE_TITLE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_GENRE)
+		VALUES(MOVIE_NO_SEQ.NEXTVAL, #{movie_title}, #{movie_director}, #{movie_actor}, #{movie_genre})
+	</insert>
+	
+	<!--영화 정보 검색(해당 번호) -->
+	<select id="selectMovie" parameterType="int" resultType="Movie">
+		SELECT * FROM
+		MOVIE_INFO WHERE MOVIE_NO=#{movie_no}
+	</select>
 </mapper>
